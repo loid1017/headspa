@@ -126,6 +126,7 @@ body {
 /* ── スタート画面 ── */
 .screen-start {
   gap: 0 !important;
+  padding-top: max(24px, env(safe-area-inset-top, 24px));
 }
 .start-hero {
   width: 100%;
