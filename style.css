@@ -37,32 +37,12 @@ body {
   position: relative;
 }
 
-/* ── ヘッダー ── */
+/* ── ヘッダー（質問・サマリー画面用） ── */
 .header {
-  padding: 24px 24px 16px;
+  padding: 16px 20px 8px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-}
-.logo {
-  display: flex;
-  align-items: center;
-}
-.logo-img-wrap {
-  flex-shrink: 0;
-}
-.logo-img {
-  height: 44px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 6px;
-}
-.header-sub {
-  font-size: 11px;
-  color: var(--text-mute);
-  letter-spacing: 0.05em;
-  padding-left: 4px;
-  margin-top: 2px;
+  gap: 2px;
 }
 
 /* ── プログレスエリア ── */
@@ -144,51 +124,44 @@ body {
 }
 
 /* ── スタート画面 ── */
-.start-visual {
-  background: var(--surface);
-  border-radius: var(--radius-card);
-  padding: 32px 28px;
+.screen-start {
+  gap: 0 !important;
+}
+.start-hero {
+  width: 100%;
+  margin: 0 -20px;
+  width: calc(100% + 40px);
+}
+.start-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 20px rgba(45, 106, 79, 0.12);
+}
+.start-body {
+  padding: 28px 4px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  box-shadow: 0 2px 20px rgba(45, 106, 79, 0.06);
-}
-.start-logo-area {
-  animation: breathe 5s ease-in-out infinite;
-}
-.start-logo-img {
-  width: 260px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(45, 106, 79, 0.12);
-}
-@keyframes breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .start-logo-area { animation: none; }
+  gap: 12px;
+  text-align: center;
 }
 .start-title {
   font-family: 'Zen Mincho', serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 500;
   color: var(--green-deep);
-  line-height: 1.5;
-  text-align: center;
+  line-height: 1.6;
 }
 .start-desc {
   font-size: 14px;
   color: var(--text-sub);
   line-height: 1.9;
-  text-align: center;
 }
-.start-desc small {
+.start-time {
   font-size: 12px;
   color: var(--text-mute);
-  display: block;
-  margin-top: 8px;
 }
 
 /* ── 質問画面 ── */
