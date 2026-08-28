@@ -129,14 +129,12 @@ body {
 }
 .start-hero {
   width: 100%;
-  margin: 20px -20px 0;
-  width: calc(100% + 40px);
 }
 .start-hero-img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0 0 24px 24px;
+  border-radius: 16px;
   box-shadow: 0 4px 20px rgba(45, 106, 79, 0.12);
 }
 .start-body {
