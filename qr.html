@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>うららか QRコード</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F2F8F2;
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; padding: 24px;
+    }
+    .card {
+      background: white; border-radius: 20px; padding: 36px;
+      text-align: center; box-shadow: 0 4px 24px rgba(45,106,79,0.10);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 20px; max-width: 320px; width: 100%;
+    }
+    .logo { width: 200px; border-radius: 10px; }
+    .label { font-size: 13px; color: #52796F; line-height: 1.9; }
+    #qr-wrap {
+      padding: 14px; background: white; border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(45,106,79,0.10);
+    }
+    #qr-wrap canvas, #qr-wrap img { display: block; border-radius: 4px; }
+    .url { font-size: 11px; color: #95B5A8; }
+    .btn-dl {
+      background: #2D6A4F; color: white; border: none;
+      border-radius: 50px; padding: 14px 0;
+      font-size: 14px; cursor: pointer; letter-spacing: 0.05em; width: 100%;
+    }
+    .btn-dl:hover { background: #245a42; }
+    .loading { font-size: 12px; color: #95B5A8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="logo.jpg" alt="とまり木 salon うららか" class="logo">
+    <p class="label">ご来店の前に<br>こちらからカウンセリングにお答えください</p>
+    <div id="qr-wrap">
+      <p class="loading" id="loading">読み込み中...</p>
+    </div>
+    <p class="url">picoshi.github.io/headspa</p>
+    <button class="btn-dl" onclick="downloadQR()">QR画像をダウンロード</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script>
+    const URL_TARGET = 'https://picoshi.github.io/headspa/';
+
+    function renderQR() {
+      const wrap = document.getElementById('qr-wrap');
+      document.getElementById('loading').remove();
+      QRCode.toCanvas(URL_TARGET, {
+        width: 200,
+        margin: 0,
+        color: { dark: '#1B4332', light: '#FFFFFF' }
+      }, function(err, canvas) {
+        if (err) { wrap.textContent = 'QRコードを生成できませんでした'; return; }
+        wrap.appendChild(canvas);
+      });
+    }
+
+    if (typeof QRCode !== 'undefined') {
+      renderQR();
+    } else {
+      window.addEventListener('load', function() {
+        if (typeof QRCode !== 'undefined') renderQR();
+        else document.getElementById('loading').textContent = 'QRコードはオンライン環境でご覧ください';
+      });
+    }
+
+    function downloadQR() {
+      const canvas = document.querySelector('#qr-wrap canvas');
+      if (!canvas) { alert('QRコードが表示されてからダウンロードしてください'); return; }
+      const a = document.createElement('a');
+      a.download = 'うららか_QRコード.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    }
+  </script>
+</body>
+</html>
