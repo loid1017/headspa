@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>うららか｜カウンセリング</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- ヘッダー -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-img-wrap"><img src="logo.jpg" alt="とまり木 salon うららか" class="logo-img"></div>
+      </div>
+      <p class="header-sub">ご来店ありがとうございます</p>
+    </header>
+
+    <!-- プログレスエリア -->
+    <div class="progress-area" id="progressArea" style="display:none">
+      <div class="progress-info">
+        <span class="progress-step" id="progressStep">1 / 8</span>
+        <span class="progress-label" id="progressLabel">基本情報</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+        <div class="leaf-row" id="leafRow"></div>
+      </div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <main class="main" id="mainContent">
+
+      <!-- スタート画面 -->
+      <div class="screen screen-start active" id="screenStart">
+        <div class="start-visual">
+          <div class="start-logo-area">
+            <img src="logo.jpg" alt="とまり木 salon うららか" class="start-logo-img">
+          </div>
+          <div class="start-text">
+            <h1 class="start-title">本日も<br>ようこそ</h1>
+            <p class="start-desc">施術をより心地よくお受けいただくために<br>いくつかお伺いさせてください。<br><small>所要時間：約2〜3分</small></p>
+          </div>
+        </div>
+        <button class="btn-primary" id="btnStart">はじめる</button>
+      </div>
+
+      <!-- 質問画面 -->
+      <div class="screen screen-question" id="screenQuestion">
+        <div class="question-card" id="questionCard">
+          <div class="question-category" id="questionCategory">基本情報</div>
+          <h2 class="question-text" id="questionText"></h2>
+          <p class="question-sub" id="questionSub"></p>
+        </div>
+        <div class="choices" id="choices"></div>
+        <button class="btn-back" id="btnBack">← 前の質問へ戻る</button>
+      </div>
+
+      <!-- サマリー画面 -->
+      <div class="screen screen-summary" id="screenSummary">
+        <div class="summary-header">
+          <div class="summary-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="#74C69D" stroke-width="2"/>
+              <path d="M12 20L17 25L28 14" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="summary-title">カウンセリング完了</h2>
+          <p class="summary-desc">ご回答いただきありがとうございます。<br>スタッフにこの画面をご提示ください。</p>
+        </div>
+        <div class="summary-body" id="summaryBody"></div>
+        <button class="btn-secondary" id="btnRestart">最初からやり直す</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
