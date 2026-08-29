@@ -326,7 +326,9 @@ function showSummary() {
 }
 
 function buildLineText() {
-  let lines = ['【うららか カウンセリング内容】\n'];
+  const now = new Date();
+  const timestamp = `${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  let lines = [`【うららか カウンセリング】${timestamp}\n`];
   CATEGORY_ORDER.forEach(cat => {
     const qs = QUESTIONS.filter(q => q.category === cat);
     if (!qs.length) return;
@@ -335,7 +337,8 @@ function buildLineText() {
       const ans = answers[q.id];
       const label = q.text.replace(/\n/g, '');
       if (Array.isArray(ans)) {
-        lines.push(`${label}：${ans.join('、')}`);
+        lines.push(`${label}：`);
+        ans.forEach(a => lines.push(`  ・${a}`));
       } else {
         lines.push(`${label}：${ans || '未回答'}`);
       }
