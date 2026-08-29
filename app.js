@@ -328,23 +328,36 @@ function showSummary() {
 function buildLineText() {
   const now = new Date();
   const timestamp = `${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-  let lines = [`【うららか カウンセリング】\n📅 ${timestamp}\n`];
+  const CATEGORY_EMOJI = {
+    '基本情報': '🌿',
+    '本日のご体調': '💚',
+    '施術のご希望': '✨',
+    'ご確認事項': '📋',
+    'セラピストへ': '💬'
+  };
+  let lines = [
+    `🌿 うららか カウンセリング`,
+    `🕐 回答時間：${timestamp}`,
+    `─────────────────`
+  ];
   CATEGORY_ORDER.forEach(cat => {
     const qs = QUESTIONS.filter(q => q.category === cat);
     if (!qs.length) return;
-    lines.push(`■ ${cat}`);
+    lines.push(`${CATEGORY_EMOJI[cat] || '▸'} ${cat}`);
     qs.forEach(q => {
       const ans = answers[q.id];
       const label = q.text.replace(/\n/g, '');
       if (Array.isArray(ans)) {
-        lines.push(`・${label}：`);
-        ans.forEach(a => lines.push(`  　${a}`));
+        lines.push(`　📌 ${label}`);
+        ans.forEach(a => lines.push(`　　✅ ${a}`));
       } else {
-        lines.push(`・${label}：${ans || '未回答'}`);
+        lines.push(`　📌 ${label}`);
+        lines.push(`　　▶ ${ans || '未回答'}`);
       }
     });
     lines.push('');
   });
+  lines.push(`─────────────────`);
   return lines.join('\n');
 }
 
