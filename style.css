@@ -325,6 +325,28 @@ body {
 }
 .btn-secondary:hover { border-color: var(--green-mid); color: var(--green-deep); }
 
+.btn-line {
+  background: #06C755;
+  color: white;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 16px 32px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: center;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(6, 199, 85, 0.3);
+}
+.btn-line:hover { background: #05b34c; }
+.btn-line:active { transform: scale(0.97); }
+
 /* ── サマリー画面 ── */
 .summary-header {
   background: var(--surface);

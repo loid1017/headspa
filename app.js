@@ -313,6 +313,36 @@ function showSummary() {
   progressArea.style.display = 'none';
   showScreen('screenSummary');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // LINEシェアボタンにテキストをセット
+  const lineBtn = document.getElementById('btnLine');
+  if (lineBtn) {
+    const text = buildLineText();
+    lineBtn.onclick = () => {
+      const url = 'https://line.me/R/share?text=' + encodeURIComponent(text);
+      window.open(url, '_blank');
+    };
+  }
+}
+
+function buildLineText() {
+  let lines = ['【うららか カウンセリング内容】\n'];
+  CATEGORY_ORDER.forEach(cat => {
+    const qs = QUESTIONS.filter(q => q.category === cat);
+    if (!qs.length) return;
+    lines.push(`■ ${cat}`);
+    qs.forEach(q => {
+      const ans = answers[q.id];
+      const label = q.text.replace(/\n/g, '');
+      if (Array.isArray(ans)) {
+        lines.push(`${label}：${ans.join('、')}`);
+      } else {
+        lines.push(`${label}：${ans || '未回答'}`);
+      }
+    });
+    lines.push('');
+  });
+  return lines.join('\n');
 }
 
 /* ── 最初からやり直す ── */
