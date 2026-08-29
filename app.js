@@ -342,9 +342,9 @@ function buildLineText() {
       const label = q.text.replace(/\n/g, '');
       if (Array.isArray(ans)) {
         lines.push(`${label}：`);
-        ans.forEach(a => lines.push(`  ・${a}`));
+        ans.forEach(a => lines.push(`  ✅ ${a}`));
       } else {
-        lines.push(`${label}：${ans || '未回答'}`);
+        lines.push(`${label}：▶ ${ans || '未回答'}`);
       }
     });
     lines.push('');
