@@ -344,7 +344,8 @@ function buildLineText() {
         lines.push(`${label}：`);
         ans.forEach(a => lines.push(`  ✅ ${a}`));
       } else {
-        lines.push(`${label}：✅ ${ans || '未回答'}`);
+        lines.push(`${label}：`);
+        lines.push(`  ✅ ${ans || '未回答'}`);
       }
     });
     lines.push('');
