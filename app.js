@@ -319,7 +319,7 @@ function showSummary() {
   if (lineBtn) {
     const text = buildLineText();
     lineBtn.onclick = () => {
-      const url = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent('https://picoshi.github.io/headspa/') + '&text=' + encodeURIComponent(text);
+      const url = 'https://line.me/R/msg/text/?' + encodeURIComponent(text);
       window.open(url, '_blank');
     };
   }
