@@ -40,8 +40,7 @@ const QUESTIONS = [
     id: 'focus_area',
     category: '施術のご希望',
     text: '特に念入りに\nほぐしてほしい部位は？',
-    sub: '複数お選びいただけます',
-    type: 'multi',
+    type: 'single',
     choices: ['頭全体', 'こめかみ・側頭部', '首の後ろ・うなじ', '肩・僧帽筋まわり', '目まわり・おでこ', 'おまかせ']
   },
   {
